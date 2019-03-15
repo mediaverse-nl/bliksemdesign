@@ -4,9 +4,9 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Product extends Model
+class OrderedItems extends Model
 {
-    protected $table = 'product';
+    protected $table = 'ordered_items';
 
     /**
      * Get all of the models that own comments.
@@ -15,11 +15,4 @@ class Product extends Model
     {
         return $this->morphTo();
     }
-
-    public function strips()
-    {
-        return $this->hasMany('App\Strip');
-    }
 }
-
-
