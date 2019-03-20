@@ -1,5 +1,8 @@
 @extends('layouts.app')
 
+@section('meta_title', 'test')
+@section('meta_description', 'test')
+
 @section('content')
 <div class="container">
     <div class="row">
@@ -10,3 +13,9 @@
     </div>
 </div>
 @endsection
+
+@push('css')
+@endpush
+
+@push('js')
+@endpush

@@ -19,11 +19,26 @@ class PageController extends Controller
     {
         $page = Page::findBySlug($slug);
 
+
+        switch ($slug){
+            case '/':
+            case 'home':
+                $view = 'site.default';
+                break;
+            case 'contact':
+                $view = 'site.default';
+                break;
+            default:
+                $view = 'site.default';
+        }
+
         if ($page == null){
             return abort(404);
         }
 
-        return view('site.page.show')
+
+
+        return view($view)
             ->with('page', $page);
     }
 }
