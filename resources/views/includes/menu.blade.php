@@ -1,4 +1,4 @@
-<nav class="navbar navbar-default navbar-fixed-top">
+<nav class="navbar navbar- navbar-fixed-top">
     <div class="container">
         <div class="navbar-header">
 
@@ -11,22 +11,23 @@
             </button>
 
             <!-- Branding Image -->
-            <a class="navbar-brand" href="{{ url('/') }}">
-                {{ config('app.name', 'Laravel') }}
+            <a class="navbar-brand" href="{{ url('/') }}" style="padding:0px 0px 0px 15px !important;">
+                <img src="/img/bliksemdesign.webp" alt="" class="img-responsive" style="height: 50px;">
             </a>
         </div>
 
         <div class="collapse navbar-collapse" id="app-navbar-collapse">
             <!-- Left Side Of Navbar -->
             <ul class="nav navbar-nav">
-                <li><a href="">Home</a></li>
-                <li><a href="">Tarieven</a></li>
-                <li><a href="">Over Ons</a></li>
-                <li><a href="">Contact</a></li>
+
             </ul>
 
             <!-- Right Side Of Navbar -->
             <ul class="nav navbar-nav navbar-right">
+                <li><a href="">Home</a></li>
+                <li><a href="">Tarieven</a></li>
+                <li><a href="">Over Ons</a></li>
+                <li><a href="">Contact</a></li>
                 <!-- Authentication Links -->
                 @if (Auth::guest())
                     <li><a href="{{ route('login') }}">Login</a></li>
