@@ -55,24 +55,116 @@
                     <div class="col-md-6">
                         <div class="panel panel-black">
                             <div class="panel-body">
-                                <p style="height: 50px;">visitekaartjes</p>
+                                <div class="row">
+                                    <div class="col-md-2 text-center" style="font-size: 3em;">
+                                        <i class="fas fa-id-card fa-lg" style="font-size: 100% !important;"></i>
+                                    </div>
+                                    <div class="col-md-9" style="font-weight: bolder !important;">
+                                        <h3>visitekaartjes</h3>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="panel panel-black">
                             <div class="panel-body">
-                                <p style="height: 50px;">logo</p>
+                                <div class="row">
+                                    <div class="col-md-2 text-center" style="font-size: 3em;">
+                                        <i class="fas fa-eye fa-lg" style="font-size: 100% !important;"></i>
+                                    </div>
+                                    <div class="col-md-9" style="font-weight: bolder !important;">
+                                        <h3>Logo</h3>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="panel panel-black">
                             <div class="panel-body">
-                                <p style="height: 50px;">Video</p>
+                                <div class="row">
+                                    <div class="col-md-2 text-center" style="font-size: 3em;">
+                                        <i class="fas fa-play fa-lg" style="font-size: 100% !important;"></i>
+                                    </div>
+                                    <div class="col-md-9" style="font-weight: bolder !important;">
+                                        <h3>Video</h3>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
+                    <div class="col-md-6">
+                        <div class="panel panel-black">
+                            <div class="panel-body">
+                                <div class="row">
+                                    <div class="col-md-2 text-center" style="font-size: 3em;">
+                                        <i class="fas fa-store fa-lg" style="font-size: 100% !important;"></i>
+                                    </div>
+                                    <div class="col-md-9" style="font-weight: bolder !important;">
+                                        <h3>Website</h3>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="panel panel-black">
+                            <div class="panel-body">
+                                <div class="row">
+                                    <div class="col-md-2 text-center" style="font-size: 3em;">
+                                        <i class="fas fa-shopping-cart fa-lg" style="font-size: 100% !important;"></i>
+                                    </div>
+                                    <div class="col-md-9" style="font-weight: bolder !important;">
+                                        <h3>webshop</h3>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="panel panel-black">
+                            <div class="panel-body">
+                                <div class="row">
+                                    <div class="col-md-2 text-center" style="font-size: 3em;">
+                                        <i class="fas fa-ad fa-lg" style="font-size: 100% !important;"></i>
+                                    </div>
+                                    <div class="col-md-9" style="font-weight: bolder !important;">
+                                        <h3>campagne reclame</h3>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="panel panel-black">
+                            <div class="panel-body">
+                                <div class="row">
+                                    <div class="col-md-2 text-center" style="font-size: 3em;">
+                                        <i class="fas fa-chart-bar fa-lg" style="font-size: 100% !important;"></i>
+                                    </div>
+                                    <div class="col-md-9" style="font-weight: bolder !important;">
+                                        <h3>SEO</h3>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="panel panel-black">
+                            <div class="panel-body">
+                                <div class="row">
+                                    <div class="col-md-2 text-center" style="font-size: 3em;">
+                                        <i class="fas fa-paper-plane fa-lg" style="font-size: 100% !important;"></i>
+                                    </div>
+                                    <div class="col-md-9" style="font-weight: bolder !important;">
+                                        <h3>Flyer</h3>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
             </div>
         </div>
