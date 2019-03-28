@@ -1,5 +1,4 @@
 
-
 @extends('layouts.app')
 
 @section('meta_title', 'test')
@@ -11,13 +10,13 @@
             <div class="col-md-8 col-md-offset-2">
                 <div class="panel panel-default">
                     <div class="panel-heading">Chats</div>
-
                     <div class="panel-body">
                         <chat-messages :messages="messages"></chat-messages>
                     </div>
                     <div class="panel-footer">
-                        <chat-form v-on:messagesent="addMessage"
-                                :user="{{ Auth::user() }}"
+                        <chat-form
+                                v-on:messagesent="addMessage"
+                                :user="{{Auth::user()}}"
                         ></chat-form>
                     </div>
                 </div>
@@ -45,6 +44,11 @@
             color: #777777;
         }
 
+        .panel-heading {
+            background-color: #2979FF !important;
+            color: #ffffff !important;
+        }
+
         .panel-body {
             overflow-y: scroll;
             height: 350px;
@@ -70,6 +74,10 @@
 @push('js')
     <script>
         // console.log(process);
+        var container = document.querySelector(".chat");
+        container.scrollTop = container.scrollHeight;
+        console.log(container.scrollTop);
+
     </script>
 @endpush
 

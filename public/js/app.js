@@ -1013,9 +1013,8 @@ module.exports = function normalizeComponent (
 
 /***/ }),
 /* 10 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
-"use strict";
 /**
  * First we will load all of this project's JavaScript dependencies which
  * includes Vue and other libraries. It is a great starting point when
@@ -44593,7 +44592,7 @@ var Component = __webpack_require__(9)(
   /* cssModules */
   null
 )
-Component.options.__file = "C:\\wampserver\\www\\bliksemdesign\\resources\\assets\\js\\components\\ChatForm.vue"
+Component.options.__file = "C:\\Users\\master\\PhpstormProjects\\bliksemdesign\\resources\\assets\\js\\components\\ChatForm.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] ChatForm.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -44627,7 +44626,7 @@ var Component = __webpack_require__(9)(
   /* cssModules */
   null
 )
-Component.options.__file = "C:\\wampserver\\www\\bliksemdesign\\resources\\assets\\js\\components\\ChatMessages.vue"
+Component.options.__file = "C:\\Users\\master\\PhpstormProjects\\bliksemdesign\\resources\\assets\\js\\components\\ChatMessages.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] ChatMessages.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -44653,7 +44652,10 @@ module.exports = Component.exports
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('ul', {
-    staticClass: "chat"
+    staticClass: "chat scroll",
+    attrs: {
+      "id": "test"
+    }
   }, _vm._l((_vm.messages), function(message) {
     return _c('li', {
       staticClass: "left clearfix"
@@ -44718,7 +44720,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     on: {
       "click": _vm.sendMessage
     }
-  }, [_vm._v("\n                Send\n            ")])])])
+  }, [_vm._v("\n            Send\n        ")])])])
 },staticRenderFns: []}
 module.exports.render._withStripped = true
 if (false) {
