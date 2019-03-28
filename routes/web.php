@@ -21,6 +21,14 @@ Route::group(['prefix' => 'admin'], function () {
 
 Auth::routes();
 
+
+//Route::get('/chatbox', 'ChatController@index')->name('test');
+
+Route::get('/chat', 'Auth\ChatController@index');
+Route::get('messages', 'Auth\ChatController@fetchMessages');
+Route::post('messages', 'Auth\ChatController@sendMessage');
+
 //Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/{slug}', 'Site\PageController@show')->name('page.show');
+

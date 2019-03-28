@@ -37,9 +37,10 @@
     @stack('css')
 </head>
 <body>
-    <div id="app">
-        @include('includes.menu')
 
+@include('includes.menu')
+
+    <div id="app">
         @yield('content')
     </div>
 

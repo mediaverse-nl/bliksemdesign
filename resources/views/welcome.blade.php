@@ -4,8 +4,63 @@
 @section('meta_description', 'welcome')
 
 @section('content')
+
     <div class="container">
         <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <div class="panel panel-default">
+                    <div class="panel-heading">Chats</div>
+
+                    <div class="panel-body">
+                        <chat-messages :messages="messages"></chat-messages>
+                    </div>
+                    <div class="panel-footer">
+                        <chat-form v-on:messagesent="addMessage"
+                                   :user="{{ Auth::user() }}"
+                        ></chat-form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="row">
+
+
+
+
+            {{--{!! dd([--}}
+                {{--'website' => 500,--}}
+                {{--'webshop' => 1000,--}}
+                {{--'logo' => 500,--}}
+                {{--'video_advertising' => [--}}
+                    {{--'units' => '1',--}}
+                    {{--'price' => '300',--}}
+                {{--],--}}
+                {{--'visitekaartjes' => [--}}
+                    {{--'units' => 500,--}}
+                    {{--'basis' => [--}}
+                        {{--'prijs' => 'gratis',--}}
+                    {{--],--}}
+                    {{--'normaal' => [--}}
+                        {{--'prijs' => 20,--}}
+                    {{--],--}}
+                    {{--'exclusief' => [--}}
+                        {{--'prijs' => 50,--}}
+                    {{--],--}}
+                {{--],--}}
+                {{--'huisstijl' => [--}}
+                {{--],--}}
+                {{--//stationary--}}
+                {{--'stationary_pakket' => [--}}
+                {{--],--}}
+                {{--'sea' => [--}}
+                {{--],--}}
+                {{--'seo' => [--}}
+                {{--],--}}
+            {{--]) !!}--}}
+
             <div class="col-md-6">
                 <div class="panel panel-default">
                     <div class="panel-body">
