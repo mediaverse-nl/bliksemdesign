@@ -22,13 +22,12 @@
 
             </ul>
 
-            <!-- Right Side Of Navbar -->
+
+        <!-- Right Side Of Navbar -->
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="">Home</a></li>
-                <li><a href="">Tarieven</a></li>
-                <li><a href="">Over Ons</a></li>
-                <li><a href="">Contact</a></li>
-                <!-- Authentication Links -->
+             {!! menu('main', 'components.menu') !!}
+
+            <!-- Authentication Links -->
                 @if (Auth::guest())
                     <li><a href="{{ route('login') }}">Login</a></li>
                     <li><a href="{{ route('register') }}">Register</a></li>

@@ -20,3 +20,10 @@ Broadcast::channel('App.User.{id}', function ($user, $id) {
 Broadcast::channel('chat', function ($user) {
     return Auth::check();
 });
+
+Broadcast::channel('room.{room_id}', function ($user, $room_id) {
+//    if ($user->rooms->contains($room_id)) {
+//        return $user->name;
+//    }
+    return true;
+});

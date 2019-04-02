@@ -20,6 +20,11 @@ class ChatController extends Controller
         return view('site.chat');
     }
 
+    public function anonymous()
+    {
+        return view('site.chat');
+    }
+
     public function fetchMessages()
     {
         return Message::with('user')->get();
