@@ -1,6 +1,8 @@
 
 window._ = require('lodash');
 
+// require('dotenv').config();
+
 /**
  * We'll load jQuery and the Bootstrap jQuery plugin which provides support
  * for JavaScript based Bootstrap features such as modals and tabs. This
@@ -20,7 +22,7 @@ require('bootstrap-sass');
 
 window.Vue = require('vue');
 
-Vue.config.productionTip = false;
+Vue.config.productionTip = true;
 
 /**
  * We'll load the axios HTTP library which allows us to easily issue requests
@@ -44,7 +46,8 @@ window.Pusher = require('pusher-js');
 
 window.Echo = new Echo({
     broadcaster: 'pusher',
-    key: '3f80f39f7fe8417ace53',
-    cluster: 'eu',
+    key: process.env.MIX_PUSHER_APP_KEY,
+    cluster: process.env.MIX_PUSHER_CLUSTER,
     encrypted: true
 });
+

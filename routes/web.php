@@ -44,3 +44,6 @@ Route::post('messages', 'Auth\ChatController@sendMessage');
 
 Route::get('/{slug?}', 'Site\PageController@show')->name('page.show');
 
+Route::get('/chatbox/messages', 'Site\CustomerChatController@fetchMessages')->name('site.chat.fetchMessages');
+Route::post('/chatbox', 'Site\CustomerChatController@sendMessage')->name('site.chat.sendMessage');
+
