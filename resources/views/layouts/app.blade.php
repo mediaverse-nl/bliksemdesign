@@ -30,6 +30,9 @@
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
+    <meta name="chat-session" content="{!! request()->session()->has('chat_session')
+            ? request()->session()->get('chat_session')
+            : null !!}">
 
     <title>{{ config('app.name', 'Laravel') }} | @yield('meta_title')</title>
 
@@ -76,6 +79,8 @@
     <script src="{{ asset('js/app.js') }}"></script>
 
     <script>
+        // console.log( window.Laravel.chat_session )
+
         $(function () {
             var $nav = $(".navbar-fixed-top");
 

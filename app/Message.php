@@ -20,5 +20,14 @@ class Message extends Model
         return $this->belongsTo(User::class);
     }
 
-
+    public function getMessageArrayAttribute()
+    {
+        return [
+            'author' => $this->user_id == null ? 'me' : $this->user_id,
+            'type' => 'text',
+            'data' => [
+                'text' => $this->message
+            ],
+        ];
+    }
 }

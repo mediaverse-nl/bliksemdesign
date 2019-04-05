@@ -21,9 +21,7 @@ Broadcast::channel('chat', function ($user) {
     return Auth::check();
 });
 
-Broadcast::channel('room.{room_id}', function ($user, $room_id) {
-//    if ($user->rooms->contains($room_id)) {
-//        return $user->name;
-//    }
+Broadcast::channel('chat.{chat_session}', function ($chat_session) {
+//    return $chat_session === $chat_session;
     return true;
 });

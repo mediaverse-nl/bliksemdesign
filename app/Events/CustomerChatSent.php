@@ -26,7 +26,7 @@ class CustomerChatSent implements ShouldBroadcast
     public function __construct($data)
     {
         $this->data = $data;
-        $this->dontBroadcastToCurrentUser();
+//        $this->dontBroadcastToCurrentUser();
     }
 
     /**
@@ -36,6 +36,6 @@ class CustomerChatSent implements ShouldBroadcast
      */
     public function broadcastOn()
     {
-        return new PresenceChannel('chat.' . $this->data['chat_session']);
+        return new Channel('chat.' . $this->data['chat_session']);
     }
 }

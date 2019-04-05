@@ -21,8 +21,22 @@ class CustomerChatController extends Controller
                 ->get('chat_session');
         }
 
-        return Message::where('chat_session', '=', $chatSession)
-            ->get();
+        $messages = Message::where('chat_session', '=', $chatSession)
+            ->get(['message', 'user_id']);
+
+        $data = [];
+
+        foreach ($messages as $message){
+            $data[] = [
+                'author' => $message->user_id == null ? 'me' : $message->user_id,
+                'type' => 'text',
+                'data' => [
+                    'text' => $message->message
+                ]
+            ];
+        }
+
+        return $data;
     }
 
     public function sendMessage(Request $request)
@@ -44,9 +58,18 @@ class CustomerChatController extends Controller
 
         $messageInst = new Message;
 
-        $messageInst->insert($data);
+        $msgId = $messageInst->insertGetId($data);
 
-        broadcast(new CustomerChatSent($data))->toOthers();
+        $msg = $messageInst->findOrFail($msgId);
+
+        broadcast(new CustomerChatSent([
+            'author' => $msg->user_id == null ? 'me' : $msg->user_id,
+            'type' => 'text',
+            'data' => [
+                'text' => $msg->message
+            ],
+            'chat_session' => $chatSession,
+        ]))->toOthers();
 
         return ['status' => 'Message Sent!'];
     }
