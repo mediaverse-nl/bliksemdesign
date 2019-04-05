@@ -63,7 +63,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 54);
+/******/ 	return __webpack_require__(__webpack_require__.s = 51);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -73,7 +73,7 @@
 "use strict";
 
 
-var bind = __webpack_require__(8);
+var bind = __webpack_require__(7);
 
 /*global toString:true*/
 
@@ -407,7 +407,7 @@ module.exports = g;
 /* WEBPACK VAR INJECTION */(function(process) {
 
 var utils = __webpack_require__(0);
-var normalizeHeaderName = __webpack_require__(28);
+var normalizeHeaderName = __webpack_require__(27);
 
 var PROTECTION_PREFIX = /^\)\]\}',?\n/;
 var DEFAULT_CONTENT_TYPE = {
@@ -424,10 +424,10 @@ function getDefaultAdapter() {
   var adapter;
   if (typeof XMLHttpRequest !== 'undefined') {
     // For browsers use XHR adapter
-    adapter = __webpack_require__(4);
+    adapter = __webpack_require__(3);
   } else if (typeof process !== 'undefined') {
     // For node use HTTP adapter
-    adapter = __webpack_require__(4);
+    adapter = __webpack_require__(3);
   }
   return adapter;
 }
@@ -498,79 +498,22 @@ utils.forEach(['post', 'put', 'patch'], function forEachMethodWithData(method) {
 
 module.exports = defaults;
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(9)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(8)))
 
 /***/ }),
 /* 3 */
-/***/ (function(module, exports) {
-
-// this module is a runtime utility for cleaner component module output and will
-// be included in the final webpack user bundle
-
-module.exports = function normalizeComponent (
-  rawScriptExports,
-  compiledTemplate,
-  scopeId,
-  cssModules
-) {
-  var esModule
-  var scriptExports = rawScriptExports = rawScriptExports || {}
-
-  // ES6 modules interop
-  var type = typeof rawScriptExports.default
-  if (type === 'object' || type === 'function') {
-    esModule = rawScriptExports
-    scriptExports = rawScriptExports.default
-  }
-
-  // Vue.extend constructor export interop
-  var options = typeof scriptExports === 'function'
-    ? scriptExports.options
-    : scriptExports
-
-  // render functions
-  if (compiledTemplate) {
-    options.render = compiledTemplate.render
-    options.staticRenderFns = compiledTemplate.staticRenderFns
-  }
-
-  // scopedId
-  if (scopeId) {
-    options._scopeId = scopeId
-  }
-
-  // inject cssModules
-  if (cssModules) {
-    var computed = Object.create(options.computed || null)
-    Object.keys(cssModules).forEach(function (key) {
-      var module = cssModules[key]
-      computed[key] = function () { return module }
-    })
-    options.computed = computed
-  }
-
-  return {
-    esModule: esModule,
-    exports: scriptExports,
-    options: options
-  }
-}
-
-
-/***/ }),
-/* 4 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
 var utils = __webpack_require__(0);
-var settle = __webpack_require__(20);
-var buildURL = __webpack_require__(23);
-var parseHeaders = __webpack_require__(29);
-var isURLSameOrigin = __webpack_require__(27);
-var createError = __webpack_require__(7);
-var btoa = (typeof window !== 'undefined' && window.btoa && window.btoa.bind(window)) || __webpack_require__(22);
+var settle = __webpack_require__(19);
+var buildURL = __webpack_require__(22);
+var parseHeaders = __webpack_require__(28);
+var isURLSameOrigin = __webpack_require__(26);
+var createError = __webpack_require__(6);
+var btoa = (typeof window !== 'undefined' && window.btoa && window.btoa.bind(window)) || __webpack_require__(21);
 
 module.exports = function xhrAdapter(config) {
   return new Promise(function dispatchXhrRequest(resolve, reject) {
@@ -666,7 +609,7 @@ module.exports = function xhrAdapter(config) {
     // This is only done if running in a standard browser environment.
     // Specifically not if we're in a web worker, or react-native.
     if (utils.isStandardBrowserEnv()) {
-      var cookies = __webpack_require__(25);
+      var cookies = __webpack_require__(24);
 
       // Add xsrf header
       var xsrfValue = (config.withCredentials || isURLSameOrigin(config.url)) && config.xsrfCookieName ?
@@ -742,7 +685,7 @@ module.exports = function xhrAdapter(config) {
 
 
 /***/ }),
-/* 5 */
+/* 4 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -768,7 +711,7 @@ module.exports = Cancel;
 
 
 /***/ }),
-/* 6 */
+/* 5 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -780,13 +723,13 @@ module.exports = function isCancel(value) {
 
 
 /***/ }),
-/* 7 */
+/* 6 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var enhanceError = __webpack_require__(19);
+var enhanceError = __webpack_require__(18);
 
 /**
  * Create an Error with the specified message, config, error code, and response.
@@ -804,7 +747,7 @@ module.exports = function createError(message, config, code, response) {
 
 
 /***/ }),
-/* 8 */
+/* 7 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -822,7 +765,7 @@ module.exports = function bind(fn, thisArg) {
 
 
 /***/ }),
-/* 9 */
+/* 8 */
 /***/ (function(module, exports) {
 
 // shim for using process in browser
@@ -1012,40 +955,82 @@ process.umask = function() { return 0; };
 
 
 /***/ }),
-/* 10 */
-/***/ (function(module, exports, __webpack_require__) {
+/* 9 */
+/***/ (function(module, exports) {
 
-if (false) {
-  module.exports = require('./vue.common.prod.js')
-} else {
-  module.exports = __webpack_require__(52)
+// this module is a runtime utility for cleaner component module output and will
+// be included in the final webpack user bundle
+
+module.exports = function normalizeComponent (
+  rawScriptExports,
+  compiledTemplate,
+  scopeId,
+  cssModules
+) {
+  var esModule
+  var scriptExports = rawScriptExports = rawScriptExports || {}
+
+  // ES6 modules interop
+  var type = typeof rawScriptExports.default
+  if (type === 'object' || type === 'function') {
+    esModule = rawScriptExports
+    scriptExports = rawScriptExports.default
+  }
+
+  // Vue.extend constructor export interop
+  var options = typeof scriptExports === 'function'
+    ? scriptExports.options
+    : scriptExports
+
+  // render functions
+  if (compiledTemplate) {
+    options.render = compiledTemplate.render
+    options.staticRenderFns = compiledTemplate.staticRenderFns
+  }
+
+  // scopedId
+  if (scopeId) {
+    options._scopeId = scopeId
+  }
+
+  // inject cssModules
+  if (cssModules) {
+    var computed = Object.create(options.computed || null)
+    Object.keys(cssModules).forEach(function (key) {
+      var module = cssModules[key]
+      computed[key] = function () { return module }
+    })
+    options.computed = computed
+  }
+
+  return {
+    esModule: esModule,
+    exports: scriptExports,
+    options: options
+  }
 }
 
 
 /***/ }),
-/* 11 */
+/* 10 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__bootstrap__ = __webpack_require__(34);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vue__ = __webpack_require__(10);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__bootstrap__ = __webpack_require__(32);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vue__ = __webpack_require__(49);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_vue__);
+throw new Error("Cannot find module \"vue-beautiful-chat\"");
 /**
  * First we will load all of this project's JavaScript dependencies which
  * includes Vue and other libraries. It is a great starting point when
  * building robust, powerful web applications using Vue and Laravel.
  */
 
-// require('./bootstrap');
 
 
 
-
-// require('vue-beautiful-chat');
-// import Chat from 'vue-beautiful-chat';
-//
-// Vue.use(Chat);
+__WEBPACK_IMPORTED_MODULE_1_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_2_vue_beautiful_chat___default.a);
 
 /**
 * Next, we will create a fresh Vue application instance and attach it to
@@ -1053,69 +1038,40 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 * or customize the JavaScript scaffolding to fit your unique needs.
 */
 
-__WEBPACK_IMPORTED_MODULE_1_vue___default.a.component('chat-messages', __webpack_require__(48));
-__WEBPACK_IMPORTED_MODULE_1_vue___default.a.component('chat-form', __webpack_require__(47));
+__WEBPACK_IMPORTED_MODULE_1_vue___default.a.component('chat-messages', __webpack_require__(45));
+__WEBPACK_IMPORTED_MODULE_1_vue___default.a.component('chat-form', __webpack_require__(44));
 // Vue.component('private-chat-component', require('./components/ChatForm.vue'));
-__WEBPACK_IMPORTED_MODULE_1_vue___default.a.component('beautiful-chatbox', __webpack_require__(46));
+__WEBPACK_IMPORTED_MODULE_1_vue___default.a.component('beautiful-chatbox', __webpack_require__(61));
 
 var app = new __WEBPACK_IMPORTED_MODULE_1_vue___default.a({
-    el: '#app',
-    data: {
-        messages: []
-    },
-
-    created: function created() {
-        var _this = this;
-
-        this.fetchMessages();
-        Echo.private('chat').listen('MessageSent', function (e) {
-            _this.messages.push({
-                message: e.message.message,
-                user: e.user
-            });
-        });
-    },
-
-    methods: {
-        fetchMessages: function fetchMessages() {
-            var _this2 = this;
-
-            axios.get('/messages').then(function (response) {
-                _this2.messages = response.data;
-            });
-        },
-        addMessage: function addMessage(message) {
-            this.messages.push(message);
-
-            axios.post('/messages', message).then(function (response) {
-                console.log(response);
-            });
-        }
-    }
+  el: '#app',
+  data: {
+    messages: []
+  }
 });
 
 /***/ }),
-/* 12 */
+/* 11 */
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
 
 /***/ }),
-/* 13 */
+/* 12 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(14);
+module.exports = __webpack_require__(13);
 
 /***/ }),
-/* 14 */
+/* 13 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
 var utils = __webpack_require__(0);
-var bind = __webpack_require__(8);
-var Axios = __webpack_require__(16);
+var bind = __webpack_require__(7);
+var Axios = __webpack_require__(15);
 var defaults = __webpack_require__(2);
 
 /**
@@ -1149,15 +1105,15 @@ axios.create = function create(instanceConfig) {
 };
 
 // Expose Cancel & CancelToken
-axios.Cancel = __webpack_require__(5);
-axios.CancelToken = __webpack_require__(15);
-axios.isCancel = __webpack_require__(6);
+axios.Cancel = __webpack_require__(4);
+axios.CancelToken = __webpack_require__(14);
+axios.isCancel = __webpack_require__(5);
 
 // Expose all/spread
 axios.all = function all(promises) {
   return Promise.all(promises);
 };
-axios.spread = __webpack_require__(30);
+axios.spread = __webpack_require__(29);
 
 module.exports = axios;
 
@@ -1166,13 +1122,13 @@ module.exports.default = axios;
 
 
 /***/ }),
-/* 15 */
+/* 14 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var Cancel = __webpack_require__(5);
+var Cancel = __webpack_require__(4);
 
 /**
  * A `CancelToken` is an object that can be used to request cancellation of an operation.
@@ -1230,7 +1186,7 @@ module.exports = CancelToken;
 
 
 /***/ }),
-/* 16 */
+/* 15 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1238,10 +1194,10 @@ module.exports = CancelToken;
 
 var defaults = __webpack_require__(2);
 var utils = __webpack_require__(0);
-var InterceptorManager = __webpack_require__(17);
-var dispatchRequest = __webpack_require__(18);
-var isAbsoluteURL = __webpack_require__(26);
-var combineURLs = __webpack_require__(24);
+var InterceptorManager = __webpack_require__(16);
+var dispatchRequest = __webpack_require__(17);
+var isAbsoluteURL = __webpack_require__(25);
+var combineURLs = __webpack_require__(23);
 
 /**
  * Create a new instance of Axios
@@ -1322,7 +1278,7 @@ module.exports = Axios;
 
 
 /***/ }),
-/* 17 */
+/* 16 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1381,15 +1337,15 @@ module.exports = InterceptorManager;
 
 
 /***/ }),
-/* 18 */
+/* 17 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
 var utils = __webpack_require__(0);
-var transformData = __webpack_require__(21);
-var isCancel = __webpack_require__(6);
+var transformData = __webpack_require__(20);
+var isCancel = __webpack_require__(5);
 var defaults = __webpack_require__(2);
 
 /**
@@ -1467,7 +1423,7 @@ module.exports = function dispatchRequest(config) {
 
 
 /***/ }),
-/* 19 */
+/* 18 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1493,13 +1449,13 @@ module.exports = function enhanceError(error, config, code, response) {
 
 
 /***/ }),
-/* 20 */
+/* 19 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var createError = __webpack_require__(7);
+var createError = __webpack_require__(6);
 
 /**
  * Resolve or reject a Promise based on response status.
@@ -1525,7 +1481,7 @@ module.exports = function settle(resolve, reject, response) {
 
 
 /***/ }),
-/* 21 */
+/* 20 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1552,7 +1508,7 @@ module.exports = function transformData(data, headers, fns) {
 
 
 /***/ }),
-/* 22 */
+/* 21 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1595,7 +1551,7 @@ module.exports = btoa;
 
 
 /***/ }),
-/* 23 */
+/* 22 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1670,7 +1626,7 @@ module.exports = function buildURL(url, params, paramsSerializer) {
 
 
 /***/ }),
-/* 24 */
+/* 23 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1689,7 +1645,7 @@ module.exports = function combineURLs(baseURL, relativeURL) {
 
 
 /***/ }),
-/* 25 */
+/* 24 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1749,7 +1705,7 @@ module.exports = (
 
 
 /***/ }),
-/* 26 */
+/* 25 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1770,7 +1726,7 @@ module.exports = function isAbsoluteURL(url) {
 
 
 /***/ }),
-/* 27 */
+/* 26 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1845,7 +1801,7 @@ module.exports = (
 
 
 /***/ }),
-/* 28 */
+/* 27 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1864,7 +1820,7 @@ module.exports = function normalizeHeaderName(headers, normalizedName) {
 
 
 /***/ }),
-/* 29 */
+/* 28 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1908,7 +1864,7 @@ module.exports = function parseHeaders(headers) {
 
 
 /***/ }),
-/* 30 */
+/* 29 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1942,106 +1898,7 @@ module.exports = function spread(callback) {
 
 
 /***/ }),
-/* 31 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
-
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-    data: function data() {
-        return {
-            participants: [{
-                id: 'user1',
-                name: 'Matteo',
-                imageUrl: 'https://avatars3.githubusercontent.com/u/1915989?s=230&v=4'
-            }, {
-                id: 'user2',
-                name: 'Support',
-                imageUrl: 'https://avatars3.githubusercontent.com/u/37018832?s=200&v=4'
-            }], // the list of all the participant of the conversation. `name` is the user name, `id` is used to establish the author of a message, `imageUrl` is supposed to be the user avatar.
-            titleImageUrl: 'https://a.slack-edge.com/66f9/img/avatars-teams/ava_0001-34.png',
-            messageList: [{ type: 'text', author: 'me', data: { text: 'Say yes!' } }, { type: 'text', author: 'user1', data: { text: 'No.' } }], // the list of the messages to show, can be paginated and adjusted dynamically
-            newMessagesCount: 0,
-            isChatOpen: false, // to determine whether the chat window should be open or closed
-            showTypingIndicator: '', // when set to a value matching the participant.id it shows the typing indicator for the specific user
-            colors: {
-                header: {
-                    bg: '#4e8cff',
-                    text: '#ffffff'
-                },
-                launcher: {
-                    bg: '#4e8cff'
-                },
-                messageList: {
-                    bg: '#ffffff'
-                },
-                sentMessage: {
-                    bg: '#4e8cff',
-                    text: '#ffffff'
-                },
-                receivedMessage: {
-                    bg: '#eaeaea',
-                    text: '#222222'
-                },
-                userInput: {
-                    bg: '#f4f7f9',
-                    text: '#565867'
-                }
-            }, // specifies the color scheme for the component
-            alwaysScrollToBottom: false, // when set to true always scrolls the chat to the bottom when new events are in (new message, user starts typing...)
-            messageStyling: true // enables *bold* /emph/ _underline_ and such (more info at github.com/mattmezza/msgdown)
-        };
-    },
-
-    methods: {
-        sendMessage: function sendMessage(text) {
-            if (text.length > 0) {
-                this.newMessagesCount = this.isChatOpen ? this.newMessagesCount : this.newMessagesCount + 1;
-                this.onMessageWasSent({ author: 'support', type: 'text', data: { text: text } });
-            }
-        },
-        onMessageWasSent: function onMessageWasSent(message) {
-            // called when the user sends a message
-            this.messageList = [].concat(_toConsumableArray(this.messageList), [message]);
-        },
-        openChat: function openChat() {
-            // called when the user clicks on the fab button to open the chat
-            this.isChatOpen = true;
-            this.newMessagesCount = 0;
-        },
-        closeChat: function closeChat() {
-            // called when the user clicks on the botton to close the chat
-            this.isChatOpen = false;
-        }
-    }
-});
-
-/***/ }),
-/* 32 */
+/* 30 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -2082,7 +1939,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 33 */
+/* 31 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -2110,13 +1967,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 34 */
+/* 32 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_laravel_echo__ = __webpack_require__(39);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_laravel_echo__ = __webpack_require__(37);
 
-window._ = __webpack_require__(40);
+window._ = __webpack_require__(38);
 
 // require('dotenv').config();
 
@@ -2126,10 +1983,14 @@ window._ = __webpack_require__(40);
  * code may be modified to fit the specific needs of your application.
  */
 
-window.$ = window.jQuery = __webpack_require__(38);
-window.Laravel = { csrfToken: $('meta[name=csrf-token]').attr("content") };
+window.$ = window.jQuery = __webpack_require__(36);
 
-__webpack_require__(36);
+window.Laravel = {
+  csrfToken: $('meta[name=csrf-token]').attr("content"),
+  chatSession: $('meta[name=chat-session]').attr("content")
+};
+
+__webpack_require__(34);
 
 /**
  * Vue is a modern JavaScript library for building interactive web interfaces
@@ -2137,9 +1998,9 @@ __webpack_require__(36);
  * and simple, leaving you to focus on building your next great project.
  */
 
-window.Vue = __webpack_require__(10);
+window.Vue = __webpack_require__(49);
 
-Vue.config.productionTip = false;
+Vue.config.productionTip = true;
 
 /**
  * We'll load the axios HTTP library which allows us to easily issue requests
@@ -2147,7 +2008,7 @@ Vue.config.productionTip = false;
  * CSRF token as a header based on the value of the "XSRF" token cookie.
  */
 
-window.axios = __webpack_require__(13);
+window.axios = __webpack_require__(12);
 
 window.axios.defaults.headers.common['X-CSRF-TOKEN'] = window.Laravel.csrfToken;
 window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
@@ -2159,7 +2020,7 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
  */
 
 
-window.Pusher = __webpack_require__(43);
+window.Pusher = __webpack_require__(41);
 
 window.Echo = new __WEBPACK_IMPORTED_MODULE_0_laravel_echo__["a" /* default */]({
   broadcaster: 'pusher',
@@ -2169,7 +2030,7 @@ window.Echo = new __WEBPACK_IMPORTED_MODULE_0_laravel_echo__["a" /* default */](
 });
 
 /***/ }),
-/* 35 */
+/* 33 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2327,7 +2188,7 @@ function fromByteArray (uint8) {
 
 
 /***/ }),
-/* 36 */
+/* 34 */
 /***/ (function(module, exports) {
 
 /*!
@@ -4913,7 +4774,7 @@ if (typeof jQuery === 'undefined') {
 
 
 /***/ }),
-/* 37 */
+/* 35 */
 /***/ (function(module, exports) {
 
 exports.read = function (buffer, offset, isLE, mLen, nBytes) {
@@ -5003,7 +4864,7 @@ exports.write = function (buffer, value, offset, isLE, mLen, nBytes) {
 
 
 /***/ }),
-/* 38 */
+/* 36 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
@@ -15374,7 +15235,7 @@ return jQuery;
 
 
 /***/ }),
-/* 39 */
+/* 37 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -16628,7 +16489,7 @@ var Echo = function () {
 
 
 /***/ }),
-/* 40 */
+/* 38 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(global, module) {var __WEBPACK_AMD_DEFINE_RESULT__;/**
@@ -33740,10 +33601,10 @@ var Echo = function () {
   }
 }.call(this));
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1), __webpack_require__(53)(module)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1), __webpack_require__(50)(module)))
 
 /***/ }),
-/* 41 */
+/* 39 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -33757,9 +33618,9 @@ var Echo = function () {
 
 
 
-var base64 = __webpack_require__(35)
-var ieee754 = __webpack_require__(37)
-var isArray = __webpack_require__(42)
+var base64 = __webpack_require__(33)
+var ieee754 = __webpack_require__(35)
+var isArray = __webpack_require__(40)
 
 exports.Buffer = Buffer
 exports.SlowBuffer = SlowBuffer
@@ -35540,7 +35401,7 @@ function isnan (val) {
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ }),
-/* 42 */
+/* 40 */
 /***/ (function(module, exports) {
 
 var toString = {}.toString;
@@ -35551,7 +35412,7 @@ module.exports = Array.isArray || function (arr) {
 
 
 /***/ }),
-/* 43 */
+/* 41 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(Buffer) {/*!
@@ -44438,10 +44299,10 @@ return /******/ (function(modules) { // webpackBootstrap
 /******/ ])
 });
 ;
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(41).Buffer))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(39).Buffer))
 
 /***/ }),
-/* 44 */
+/* 42 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(global, process) {(function (global, undefined) {
@@ -44631,10 +44492,10 @@ return /******/ (function(modules) { // webpackBootstrap
     attachTo.clearImmediate = clearImmediate;
 }(typeof self === "undefined" ? typeof global === "undefined" ? this : global : self));
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1), __webpack_require__(9)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1), __webpack_require__(8)))
 
 /***/ }),
-/* 45 */
+/* 43 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(global) {var scope = (typeof global !== "undefined" && global) ||
@@ -44690,7 +44551,7 @@ exports._unrefActive = exports.active = function(item) {
 };
 
 // setimmediate attaches itself to the global object
-__webpack_require__(44);
+__webpack_require__(42);
 // On some exotic environments, it's not clear which object `setimmediate` was
 // able to install onto.  Search each possibility in the same order as the
 // `setimmediate` library.
@@ -44704,54 +44565,20 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ }),
-/* 46 */
+/* 44 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var Component = __webpack_require__(3)(
+var Component = __webpack_require__(9)(
   /* script */
-  __webpack_require__(31),
+  __webpack_require__(30),
   /* template */
-  __webpack_require__(51),
+  __webpack_require__(47),
   /* scopeId */
   null,
   /* cssModules */
   null
 )
-Component.options.__file = "C:\\wampserver\\www\\bliksemdesign\\resources\\assets\\js\\components\\BeautifulChat.vue"
-if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
-if (Component.options.functional) {console.error("[vue-loader] BeautifulChat.vue: functional components are not supported with templates, they should use render functions.")}
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-7659aa44", Component.options)
-  } else {
-    hotAPI.reload("data-v-7659aa44", Component.options)
-  }
-})()}
-
-module.exports = Component.exports
-
-
-/***/ }),
-/* 47 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var Component = __webpack_require__(3)(
-  /* script */
-  __webpack_require__(32),
-  /* template */
-  __webpack_require__(50),
-  /* scopeId */
-  null,
-  /* cssModules */
-  null
-)
-Component.options.__file = "C:\\wampserver\\www\\bliksemdesign\\resources\\assets\\js\\components\\ChatForm.vue"
+Component.options.__file = "C:\\Users\\master\\PhpstormProjects\\bliksemdesign\\resources\\assets\\js\\components\\ChatForm.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] ChatForm.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -44772,20 +44599,20 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 48 */
+/* 45 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var Component = __webpack_require__(3)(
+var Component = __webpack_require__(9)(
   /* script */
-  __webpack_require__(33),
+  __webpack_require__(31),
   /* template */
-  __webpack_require__(49),
+  __webpack_require__(46),
   /* scopeId */
   null,
   /* cssModules */
   null
 )
-Component.options.__file = "C:\\wampserver\\www\\bliksemdesign\\resources\\assets\\js\\components\\ChatMessages.vue"
+Component.options.__file = "C:\\Users\\master\\PhpstormProjects\\bliksemdesign\\resources\\assets\\js\\components\\ChatMessages.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] ChatMessages.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -44806,12 +44633,15 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 49 */
+/* 46 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('ul', {
-    staticClass: "chat"
+    staticClass: "chat scroll",
+    attrs: {
+      "id": "test"
+    }
   }, _vm._l((_vm.messages), function(message) {
     return _c('li', {
       staticClass: "left clearfix"
@@ -44833,7 +44663,7 @@ if (false) {
 }
 
 /***/ }),
-/* 50 */
+/* 47 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -44876,7 +44706,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     on: {
       "click": _vm.sendMessage
     }
-  }, [_vm._v("\n                Send\n            ")])])])
+  }, [_vm._v("\n            Send\n        ")])])])
 },staticRenderFns: []}
 module.exports.render._withStripped = true
 if (false) {
@@ -44887,39 +44717,7 @@ if (false) {
 }
 
 /***/ }),
-/* 51 */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', [_c('beautiful-chat', {
-    attrs: {
-      "participants": _vm.participants,
-      "titleImageUrl": _vm.titleImageUrl,
-      "onMessageWasSent": _vm.onMessageWasSent,
-      "messageList": _vm.messageList,
-      "newMessagesCount": _vm.newMessagesCount,
-      "isOpen": _vm.isChatOpen,
-      "close": _vm.closeChat,
-      "open": _vm.openChat,
-      "showEmoji": true,
-      "showFile": true,
-      "showTypingIndicator": _vm.showTypingIndicator,
-      "colors": _vm.colors,
-      "alwaysScrollToBottom": _vm.alwaysScrollToBottom,
-      "messageStyling": _vm.messageStyling
-    }
-  })], 1)
-},staticRenderFns: []}
-module.exports.render._withStripped = true
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-     require("vue-hot-reload-api").rerender("data-v-7659aa44", module.exports)
-  }
-}
-
-/***/ }),
-/* 52 */
+/* 48 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -56862,10 +56660,21 @@ Vue.compile = compileToFunctions;
 
 module.exports = Vue;
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1), __webpack_require__(45).setImmediate))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1), __webpack_require__(43).setImmediate))
 
 /***/ }),
-/* 53 */
+/* 49 */
+/***/ (function(module, exports, __webpack_require__) {
+
+if (false) {
+  module.exports = require('./vue.common.prod.js')
+} else {
+  module.exports = __webpack_require__(48)
+}
+
+
+/***/ }),
+/* 50 */
 /***/ (function(module, exports) {
 
 module.exports = function(module) {
@@ -56893,12 +56702,282 @@ module.exports = function(module) {
 
 
 /***/ }),
-/* 54 */
+/* 51 */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(11);
-module.exports = __webpack_require__(12);
+__webpack_require__(10);
+module.exports = __webpack_require__(11);
 
+
+/***/ }),
+/* 52 */,
+/* 53 */,
+/* 54 */,
+/* 55 */,
+/* 56 */,
+/* 57 */,
+/* 58 */,
+/* 59 */,
+/* 60 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    data: function data() {
+        return {
+            participants: [{
+                id: 'user2',
+                name: 'Support',
+                imageUrl: 'https://avatars3.githubusercontent.com/u/37018832?s=200&v=4'
+            }], // the list of all the participant of the conversation. `name` is the user name, `id` is used to establish the author of a message, `imageUrl` is supposed to be the user avatar.
+            title: 'Bliksemdesign klantenservice',
+            titleImageUrl: 'https://a.slack-edge.com/66f9/img/avatars-teams/ava_0001-34.png',
+            messageList: [], // the list of the messages to show, can be paginated and adjusted dynamically
+            newMessagesCount: 0,
+            isChatOpen: false, // to determine whether the chat window should be open or closed
+            showTypingIndicator: '', // when set to a value matching the participant.id it shows the typing indicator for the specific user
+            colors: {
+                header: {
+                    bg: '#4e8cff',
+                    text: '#ffffff'
+                },
+                launcher: {
+                    bg: '#4e8cff'
+                },
+                messageList: {
+                    bg: '#ffffff'
+                },
+                sentMessage: {
+                    bg: '#4e8cff',
+                    text: '#ffffff'
+                },
+                receivedMessage: {
+                    bg: '#eaeaea',
+                    text: '#222222'
+                },
+                userInput: {
+                    bg: '#f4f7f9',
+                    text: '#565867'
+                }
+            }, // specifies the color scheme for the component
+            alwaysScrollToBottom: true, // when set to true always scrolls the chat to the bottom when new events are in (new message, user starts typing...)
+            messageStyling: true // enables *bold* /emph/ _underline_ and such (more info at github.com/mattmezza/msgdown)
+        };
+    },
+    created: function created() {
+        var _this = this;
+
+        this.fetchMessages();
+        window.Echo.channel('chat.' + window.Laravel.chatSession).listen('CustomerChatSent', function (e) {
+            _this.messageList.push(e.data);
+            if (_this.isChatOpen == false) {
+                _this.newMessagesCount++;
+            }
+        });
+        //                .listenForWhisper('typing', (e) => {
+        //                    console.log(e);
+        //                    // if(e.name !='') {
+        //                    this.showTypingIndicator = 'typing .........';
+        //                    // }
+        //                    // else {
+        //                    //     this.showTypingIndicator = ''
+        //                    // }
+        //                    // remove is typing indicator after 0.9s
+        ////                    setTimeout(function() {
+        ////                        this.showTypingIndicator = ''
+        ////                    }, 900);
+        //                });
+
+        //            window.Echo.join('chat.'+window.Laravel.chatSession)
+        //                .whisper('typing', );
+
+    },
+
+    watch: {
+        message: function message() {
+            // window.Echo.channel('chat.'+window.Laravel.chatSession)
+            //     .listenForWhisper('typing', (e) => {
+            //         console.log('typing');
+            //         // if(e.name !='') {
+            //         this.showTypingIndicator = 'typing .........';
+            //         // }
+            //         // else {
+            //         //     this.showTypingIndicator = ''
+            //         // }
+            //         // remove is typing indicator after 0.9s
+            //         setTimeout(function() {
+            //             this.showTypingIndicator = ''
+            //         }, 900);
+            //     });
+            // .listen('CustomerChatTyping', (e) => {
+            //     this.messageList.push(e.data);
+            // })
+            ;
+        }
+    },
+    mounted: function mounted() {
+        var _this2 = this;
+
+        window.addEventListener('keydown', function (e) {
+            var key = e.which || e.keyCode;
+            if (key === 38) {
+                _this2.incrementI();
+            }
+            console.log('test');
+        });
+    },
+
+    methods: {
+        sendMessage: function sendMessage(text) {
+            if (text.length > 0) {
+                this.newMessagesCount = this.isChatOpen ? this.newMessagesCount : this.newMessagesCount + 1;
+                this.onMessageWasSent({
+                    author: 'support',
+                    type: 'text',
+                    data: { text: text }
+                });
+            }
+        },
+        onMessageWasSent: function onMessageWasSent(message) {
+            this.messageList = [].concat(_toConsumableArray(this.messageList), [message]);
+            axios.post('/chatbox', message);
+        },
+        openChat: function openChat() {
+            // called when the user clicks on the fab button to open the chat
+            this.isChatOpen = true;
+            this.newMessagesCount = 0;
+        },
+        closeChat: function closeChat() {
+            // called when the user clicks on the botton to close the chat
+            this.isChatOpen = false;
+        },
+        fetchMessages: function fetchMessages() {
+            var _this3 = this;
+
+            axios.get('/chatbox/messages').then(function (response) {
+                _this3.messageList = response.data;
+            });
+        },
+        isTyping: function isTyping(event) {
+            console.log(event);
+            console.log('testtest');
+
+            //                window.Echo.join('chat.'+window.Laravel.chatSession)
+            //                    .whisper('typing');
+            this.showTypingIndicator = '...';
+        },
+        notTyping: function notTyping() {
+            this.showTypingIndicator = '';
+        }
+    }
+});
+
+/***/ }),
+/* 61 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var Component = __webpack_require__(9)(
+  /* script */
+  __webpack_require__(60),
+  /* template */
+  __webpack_require__(62),
+  /* scopeId */
+  null,
+  /* cssModules */
+  null
+)
+Component.options.__file = "C:\\Users\\master\\PhpstormProjects\\bliksemdesign\\resources\\assets\\js\\components\\BeautifulChat.vue"
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
+if (Component.options.functional) {console.error("[vue-loader] BeautifulChat.vue: functional components are not supported with templates, they should use render functions.")}
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-7659aa44", Component.options)
+  } else {
+    hotAPI.reload("data-v-7659aa44", Component.options)
+  }
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 62 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticStyle: {
+      "z-index": "999 !important"
+    }
+  }, [_c('beautiful-chat', {
+    attrs: {
+      "participants": _vm.participants,
+      "title": _vm.title,
+      "titleImageUrl": _vm.titleImageUrl,
+      "onMessageWasSent": _vm.onMessageWasSent,
+      "messageList": _vm.messageList,
+      "newMessagesCount": _vm.newMessagesCount,
+      "isOpen": _vm.isChatOpen,
+      "close": _vm.closeChat,
+      "open": _vm.openChat,
+      "placeholder": _vm.test,
+      "showEmoji": true,
+      "showFile": false,
+      "showTypingIndicator": _vm.showTypingIndicator,
+      "colors": _vm.colors,
+      "alwaysScrollToBottom": _vm.alwaysScrollToBottom,
+      "messageStyling": _vm.messageStyling,
+      "tabindex": "0"
+    },
+    on: {
+      "keydown": _vm.isTyping,
+      "keyup": _vm.notTyping
+    }
+  })], 1)
+},staticRenderFns: []}
+module.exports.render._withStripped = true
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+     require("vue-hot-reload-api").rerender("data-v-7659aa44", module.exports)
+  }
+}
 
 /***/ })
 /******/ ]);
