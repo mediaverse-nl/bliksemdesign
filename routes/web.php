@@ -11,9 +11,9 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+//Route::get('/', function () {
+//    return view('welcome');
+//});
 
 Route::group(['prefix' => 'admin'], function () {
     Voyager::routes();
@@ -22,13 +22,33 @@ Route::group(['prefix' => 'admin'], function () {
 Auth::routes();
 
 
+Route::group([
+//    'namespace' => 'Auth',
+    'prefix' => 'chat'
+], function () {
+    Route::get('/', 'ChatController@index');
+//    Route::group(function () {
+        Route::post('/send-message', 'AnonymousChatController@sendMessage');
+        Route::get('/room/{room}', 'AnonymousChatController@getRoom')->middleware('auth');
+//    });
+});
+
 //Route::get('/chatbox', 'ChatController@index')->name('test');
 
 Route::get('/chat', 'Auth\ChatController@index');
+Route::get('/anonymous-chat', 'Auth\ChatController@anonymous');
 Route::get('messages', 'Auth\ChatController@fetchMessages');
 Route::post('messages', 'Auth\ChatController@sendMessage');
 
 //Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('/{slug}', 'Site\PageController@show')->name('page.show');
+Route::get('/{slug?}', 'Site\PageController@show')->name('page.show');
 
+Route::get('/chatbox/messages', 'Site\CustomerChatController@fetchMessages')->name('site.chat.fetchMessages');
+Route::post('/chatbox', 'Site\CustomerChatController@sendMessage')->name('site.chat.sendMessage');
+
+Route::get('test-broadcast/test', function(){
+    broadcast(new \App\Events\CustomerChatSent([
+        'chat_session' => Session::get('chat_session')
+    ]));
+});

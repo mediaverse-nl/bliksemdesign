@@ -5,6 +5,14 @@
 @section('meta_description', 'test')
 
 @section('content')
+
+    chat one
+    <div class="private-chat">
+        <private-chat-component :room="{{ 1 }}" :user="{{ $user }}"></private-chat-component>
+    </div>
+    <br>
+
+    chat two
     <div class="container">
         <div class="row">
             <div class="col-md-8 col-md-offset-2">

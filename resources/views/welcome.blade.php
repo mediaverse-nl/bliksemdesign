@@ -1,33 +1,16 @@
 @extends('layouts.app')
 
-@section('meta_title', 'welcome')
-@section('meta_description', 'welcome')
+{{--@section('meta_title', $page->meta_title)--}}
+{{--@section('meta_description', $page->meta_description)--}}
 
 @section('content')
 
     <div class="container">
         <div class="row">
-            <div class="col-md-8 col-md-offset-2">
-                <div class="panel panel-default">
-                    <div class="panel-heading">Chats</div>
 
-                    <div class="panel-body">
-                        <chat-messages :messages="messages"></chat-messages>
-                    </div>
-                    <div class="panel-footer">
-                        <chat-form v-on:messagesent="addMessage"
-                                   :user="{{ Auth::user() }}"
-                        ></chat-form>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+            {{--here--}}
 
-    <div class="container">
-        <div class="row">
-
-
+            {{--end--}}
 
 
             {{--{!! dd([--}}
@@ -107,10 +90,14 @@
         <div class="row">
             <div class="col-md-12" >
                 <div class="panel-body" style="border: 1px dashed #000; padding: 15px; border-radius: 7px;">
+                    <br>
                     <div class="col-md-6">
                         <div class="panel panel-black">
                             <div class="panel-body">
                                 <div class="row">
+                                    <div class="text-center" style="margin-top: -45px; margin-left: 20px; color: black; position: absolute; width: 150px; height: 30px; background: yellow ">
+                                        <h3 style="margin: 0px; padding: 0px; font-weight: bolder">altijd gratis</h3>
+                                    </div>
                                     <div class="col-md-2 text-center" style="font-size: 3em;">
                                         <i class="fas fa-id-card fa-lg" style="font-size: 100% !important;"></i>
                                     </div>

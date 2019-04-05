@@ -20,3 +20,8 @@ Broadcast::channel('App.User.{id}', function ($user, $id) {
 Broadcast::channel('chat', function ($user) {
     return Auth::check();
 });
+
+Broadcast::channel('chat.{chat_session}', function ($chat_session) {
+//    return $chat_session === $chat_session;
+    return true;
+});

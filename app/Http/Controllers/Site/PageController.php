@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Site;
 
 use App\Page;
+use App\Product;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -15,18 +16,30 @@ class PageController extends Controller
      * @param $slug
      * @return \Illuminate\Http\Response
      */
-    public function show($slug)
+    public function show($slug = '/')
     {
-        $page = Page::findBySlug($slug);
+        if ($slug == 'home'){
+            $slug = '/';
+        }
 
+        $data = collect();
+
+        $page = Page::findBySlug($slug);
 
         switch ($slug){
             case '/':
             case 'home':
-                $view = 'site.default';
+                $view = 'welcome';
+                break;
+            case 'tarieven':
+                $data->products = Product::get();
+                $view = 'site.services';
+                break;
+            case 'over-ons':
+                $view = 'site.about';
                 break;
             case 'contact':
-                $view = 'site.default';
+                $view = 'site.contact';
                 break;
             default:
                 $view = 'site.default';
@@ -36,9 +49,8 @@ class PageController extends Controller
             return abort(404);
         }
 
-
-
         return view($view)
+            ->with('data', $data)
             ->with('page', $page);
     }
 }

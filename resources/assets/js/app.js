@@ -3,8 +3,11 @@
  * includes Vue and other libraries. It is a great starting point when
  * building robust, powerful web applications using Vue and Laravel.
  */
+import './bootstrap';
+import Vue from 'vue';
+import Chat from "vue-beautiful-chat";
 
-require('./bootstrap');
+Vue.use(Chat);
 
  /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -14,38 +17,12 @@ require('./bootstrap');
 
 Vue.component('chat-messages', require('./components/ChatMessages.vue'));
 Vue.component('chat-form', require('./components/ChatForm.vue'));
+// Vue.component('private-chat-component', require('./components/ChatForm.vue'));
+Vue.component('beautiful-chatbox', require('./components/BeautifulChat.vue'));
 
 const app = new Vue({
     el: '#app',
-
     data: {
         messages: []
-    },
-
-    created: function () {
-        this.fetchMessages();
-        Echo.private('chat')
-            .listen('MessageSent', (e) => {
-                this.messages.push({
-                    message: e.message.message,
-                    user: e.user
-                });
-            });
-    },
-
-    methods: {
-        fetchMessages() {
-            axios.get('/messages').then(response => {
-                this.messages = response.data;
-             });
-        },
-
-        addMessage(message) {
-            this.messages.push(message);
-
-            axios.post('/messages', message).then(response => {
-                console.log(response);
-            });
-        }
     }
 });

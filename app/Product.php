@@ -20,6 +20,25 @@ class Product extends Model
     {
         return $this->hasMany('App\Strip');
     }
+
+
+    public function products()
+    {
+        return [
+            'kaartjes' => [
+                'price' => 49.99,
+                'units' => 500,
+                'unity_kind' => 'aantal',
+                'icon' => 'paper-plain',
+                'options' => [
+                    'normaal' => 2.00,
+                    'glas' => 3.00,
+                    'hoogglans' => 4.00,
+                ]
+            ]
+        ];
+    }
+
 }
 
 
