@@ -34,6 +34,7 @@
                 ], // the list of all the participant of the conversation. `name` is the user name, `id` is used to establish the author of a message, `imageUrl` is supposed to be the user avatar.
                 placeholder: 'Bliksemdesign',
                 title: 'Bliksemdesign klantenservice',
+//                test: 'Bliksemdesign klantenservice',
                 titleImageUrl: 'https://a.slack-edge.com/66f9/img/avatars-teams/ava_0001-34.png',
                 messageList: [], // the list of the messages to show, can be paginated and adjusted dynamically
                 newMessagesCount: 0,
@@ -128,8 +129,8 @@
                 });
             },
             isTyping(event) {
-                console.log(event);
-                console.log('testtest');
+//                console.log(event);
+//                console.log('testtest');
 
 //                window.Echo.join('chat.'+window.Laravel.chatSession)
 //                    .whisper('typing');
